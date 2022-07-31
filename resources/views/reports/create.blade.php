@@ -44,11 +44,12 @@
                             </div> 
                             <div class="col-8 mx-3 col-md-8 mt-2">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="later" value="later" name="later">
-                                    <label class="form-check-label" for="later">اجل</label> 
+                                    <input class="form-check-input" type="radio" id="later" value="اجل" name="stat">
+                                    <label class="form-check-label" for="later">اجل</label>  
+                                   
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="cash" value="cash" name="cash">
+                                    <input class="form-check-input" type="radio" id="cash" value="نقد" name="stat">
                                     <label class="form-check-label" for="cash">نقد</label>
                                   </div>
                             </div>

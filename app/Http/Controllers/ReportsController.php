@@ -43,7 +43,7 @@ class ReportsController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'phone' =>  $request->phone,
-            'stat' => $stat,
+            'stat' => $request->stat,
             'active' =>  $request->active
             ]);
       
