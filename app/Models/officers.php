@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class officers extends Model
 {
     use HasFactory; 
-    protected $fillable = ['id', 'name'];
+    protected $fillable = ['name']; 
+    protected $primarykey = 'id';
 }

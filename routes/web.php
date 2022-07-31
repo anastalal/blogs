@@ -53,7 +53,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */ 
         Route::get('reports/show/{Reports}', [\App\Http\Controllers\ReportsController::class, 'show']); 
         Route::get('/reports/create', [\App\Http\Controllers\ReportsController::class, 'create']);
-        Route::post('reports', [\App\Http\Controllers\ReportsController::class, 'store']);  
+        Route::post('reports', [\App\Http\Controllers\ReportsController::class, 'store']); 
+        Route::get('officers/show/{officers}', [\App\Http\Controllers\OfficersController::class, 'show']); 
+        Route::get('/officers/create', [\App\Http\Controllers\OfficersController::class, 'create']);
+        Route::post('officers', [\App\Http\Controllers\OfficersController::class, 'store']);  
       // Route::post('reports/show/{id}', [\App\Http\Controllers\ReportsController::class, 'show']);  
        
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
