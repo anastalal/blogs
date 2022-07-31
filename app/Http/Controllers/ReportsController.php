@@ -11,25 +11,39 @@ use Illuminate\Http\Request;
 class ReportsController extends Controller
 {
     public function index()
-    {
-        ///$posts = Post::all();
-       // return view('reports.index', compact('reports'));
+    { 
+        $id = Auth::id(); 
+        $reports = Reports::where('user_id', $id)->get();
+
+        //$reports = Reports::where('user_id', $id)->find();
+        //return dd($reports);
+        return view('reports.index', [
+                'reports' => $reports,
+            ]);
     }
 
     public function create()
-    {
-       return view('reports.create');
+    { 
+        $officers = officers::get();
+       return view('reports.create',[
+        'officers' => $officers,
+       ]);
     }
 
     public function store(Request $request)
-    {
+    { 
+        if( $request->has('later') ){
+            $stat = "اجل";
+        } 
+        else 
+        $stat = "نقد";
         $report = Reports::create([
             'user_id' => Auth::id(),
             'office_id' => $request->office_id,
             'name' => $request->name,
             'price' => $request->price,
             'phone' =>  $request->phone,
-            'stat' => $request->stat,
+            'stat' => $stat,
             'active' =>  $request->active
             ]);
       

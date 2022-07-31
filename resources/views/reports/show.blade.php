@@ -15,10 +15,10 @@
                 <a class="btn btn-outline-primary" href="whatsapp://send?text=
                 اسم العميل:  {{ ($report->name) }},%0a رقم التقرير: {{$report->id}},%0aرقم الهاتف: {{$report->phone}} ,%0a
                 النوع: {{$report->stat}} ,%0aالتاريخ: {{$report->created_at}} ,%0aبواسطة :{{$user->name}} ,%0a
-                عبر مكتب :  {{$office->name}}" data-action="share/whatsapp/share">Share via Whatsapp</a>
-                <a href="/reports/{{ $report->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
+                عبر مكتب :  {{$office->name}}" data-action="share/whatsapp/share">مشاركة الى واتساب</a>
+                {{-- <a href="/reports/{{ $report->id }}/edit" class="btn btn-outline-primary">Edit Post</a> --}}
                 <br><br>
-                <form id="delete-frm" class="" action="" method="POST">
+                <form class="d-none" id="delete-frm" class="" action="" method="POST">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-danger">Delete Post</button>

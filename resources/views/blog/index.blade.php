@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ ucfirst($post->title) }}</h5>
                         <p class="card-text"> {{$post->body}}</p>
-                        <a href="./blog/{{ $post->id }}" class="btn btn-primary">Read more</a>
+                        <a href="./blog/{{ $post->id }}" class="btn btn-primary">Read more as new</a>
                     </div>
                     </div>
                 @empty

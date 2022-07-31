@@ -37,7 +37,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-    Route::get('/', [\App\Http\Controllers\BlogPostController::class, 'index']); 
+    // Route::get('/', [\App\Http\Controllers\BlogPostController::class, 'index']);  
+    Route::get('/', [\App\Http\Controllers\ReportsController::class, 'index']);  
     Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']); 
     Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
     Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
@@ -52,7 +53,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Logout Routes
          */ 
         Route::get('reports/show/{Reports}', [\App\Http\Controllers\ReportsController::class, 'show']); 
-        Route::get('/reports/create', [\App\Http\Controllers\ReportsController::class, 'create']);
+        Route::get('/reports/create', [\App\Http\Controllers\ReportsController::class, 'create'])->name('reports.create');
         Route::post('reports', [\App\Http\Controllers\ReportsController::class, 'store']); 
         Route::get('officers/show/{officers}', [\App\Http\Controllers\OfficersController::class, 'show']); 
         Route::get('/officers/create', [\App\Http\Controllers\OfficersController::class, 'create']);

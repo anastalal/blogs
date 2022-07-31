@@ -8,7 +8,7 @@
                 <hr>
                 {{-- <a href="/blog/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>  --}}
                 <br><br>
-                <form id="delete-frm" class="" action="" method="POST">
+                <form id="delete-frm" class="d-none" action="" method="POST">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-danger">Delete Post</button>
