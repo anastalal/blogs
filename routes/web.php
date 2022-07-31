@@ -21,7 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
+    // Route::get('/', 'HomeController@index')->name('home.index');
 
     Route::group(['middleware' => ['guest']], function() {
         /**
@@ -37,11 +37,26 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/login', 'LoginController@login')->name('login.perform');
 
     });
-
+    Route::get('/', [\App\Http\Controllers\BlogPostController::class, 'index']); 
+    Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']); 
+    Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
+    Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
+    Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
+    Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database 
+    Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']);  //deletes post from the database 
+    // Route::get('/reports/create', [\App\Http\Controllers\ReportsController::class, 'create']);
+    // Route::post('report', [\App\Http\Controllers\ReportsController::class, 'store']); 
+    
     Route::group(['middleware' => ['auth']], function() {
         /**
          * Logout Routes
-         */
+         */ 
+        Route::get('reports/show/{Reports}', [\App\Http\Controllers\ReportsController::class, 'show']); 
+        Route::get('/reports/create', [\App\Http\Controllers\ReportsController::class, 'create']);
+        Route::post('reports', [\App\Http\Controllers\ReportsController::class, 'store']);  
+      // Route::post('reports/show/{id}', [\App\Http\Controllers\ReportsController::class, 'show']);  
+       
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
     });
 });

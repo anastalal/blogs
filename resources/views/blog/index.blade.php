@@ -14,9 +14,14 @@
                     </div>
                 </div>                
                 @forelse($posts as $post)
-                    <ul>
-                        <li><a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
-                    </ul>
+                    <div class="card" style="width: 18rem;">
+                    <img src="images{{ ('/'.$post->img_path) }}"  alt="{{$post->title}}"> 
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ucfirst($post->title) }}</h5>
+                        <p class="card-text"> {{$post->body}}</p>
+                        <a href="./blog/{{ $post->id }}" class="btn btn-primary">Read more</a>
+                    </div>
+                    </div>
                 @empty
                     <p class="text-warning">No blog Posts available</p>
                 @endforelse
