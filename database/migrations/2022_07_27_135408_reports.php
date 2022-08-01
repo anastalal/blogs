@@ -23,7 +23,7 @@ return new class extends Migration
               ->references('id')->on('officers');
             $table->text('name');
             $table->integer('price');
-            $table->integer('phone');
+            $table->integer('phone')->nullable();;
             $table->string('stat');
             $table->boolean('active');
             $table->timestamps();

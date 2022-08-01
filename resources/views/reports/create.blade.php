@@ -40,7 +40,7 @@
                             <div class="control-group col-8 mx-3 col-md-8 mt-2">
                                 <label for="phone">phone</label>
                                 <input type="number" id="phone" class="form-control" name="phone" placeholder="رقم الهاتف "
-                                          required>
+                                          >
                             </div> 
                             <div class="col-8 mx-3 col-md-8 mt-2">
                                 <div class="form-check form-check-inline">

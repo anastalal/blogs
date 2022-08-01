@@ -7,7 +7,11 @@
         <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
         
         <h1 class="h3 mb-3 fw-normal">Register</h1>
-
+        <div class="form-group form-floating mb-3">
+            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="ادخل اسمك" required="required" autofocus>
+            <label for="floatingEmail">الاسم</label>
+           
+        </div>
         <div class="form-group form-floating mb-3">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
             <label for="floatingEmail">Email address</label>
