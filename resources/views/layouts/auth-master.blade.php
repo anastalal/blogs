@@ -28,7 +28,8 @@
         }
       }
     </style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -41,6 +42,8 @@
         
     </main>
     
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script  src="{{URL::asset('js/app.js'); }}"></script>
 </body>
 </html>

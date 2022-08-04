@@ -28,6 +28,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reports::class);
     }
+    public function roles() {
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
+    public function isAdministrator() {
+        return $this->roles()->where('name', 'Administrator')->exists();
+     }
     /**
      * The attributes that should be hidden for serialization.
      *

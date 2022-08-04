@@ -7,18 +7,54 @@ use App\Models\User;
 use App\Models\Reports;
 use App\Models\officers;
 use Illuminate\Http\Request; 
+use Carbon\Carbon;
 
 class ReportsController extends Controller
 {
-    public function index()
-    { 
+    public function index(Request $request)
+    {     
+        if (Auth::check()){
+        if (Auth::user()->isAdministrator()){  
+            $stat = $request->stat;
+           
+        if( $stat == 'اجل' ){ 
+            //$stat = 'اجل'; 
+            $reports= Reports::
+            whereDate('created_at' , $request->date )
+                ->where('stat' ,$stat)
+            ->get();
+        } 
+        else if ($stat == "نقد"){
+        $stat = "نقد"; 
+        $reports= Reports::
+        whereDate('created_at' , $request->date )
+            ->where('stat' ,$stat)
+        ->get();
+    } 
+     else 
+     {
+       
+        $reports= Reports::
+        whereDate('created_at' , $request->date )->get();
+     }
+        
+            
+        } 
+        else {
         $id = Auth::id(); 
         $reports = Reports::where('user_id', $id)->get();
-
-        //$reports = Reports::where('user_id', $id)->find();
-        //return dd($reports);
+        } 
+    }  else{
+        $reports = Reports::all(); 
+    }
+        $officers = officers::all();
+        $users = User::all();
+        $stat = $request->stat;
         return view('reports.index', [
                 'reports' => $reports,
+                'officers' => $officers,
+                'users'  =>$users ,
+                'stat' =>$stat
             ]);
     }
 
@@ -80,18 +116,17 @@ class ReportsController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Post $post, Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            ]);
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->published_at = $request->published_at;
-
-        $post->save();
-        return redirect('/home')->with('success','Post updated successfully!');
+    public function update($id ,Request $request)
+    { 
+        $affectedRecords = Reports::where("id", $id)->update(["active" => 0]);
+       
+        return redirect('/reports/show/'.$id)->with('success','Post updated successfully!');
+    }
+    public function archive($id ,Request $request)
+    { 
+        $affectedRecords = Reports::where("id", $id)->update(["active" => 0]);
+       
+        return redirect('/reports/show/'.$id);
     }
 
     public function destroy(Post $post)

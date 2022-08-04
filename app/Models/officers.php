@@ -9,5 +9,9 @@ class officers extends Model
 {
     use HasFactory; 
     protected $fillable = ['name']; 
-    protected $primarykey = 'id';
+    protected $primarykey = 'id'; 
+    public function reports()
+    {
+        return $this->hasMany(Reports::class);
+    }
 }

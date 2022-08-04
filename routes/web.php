@@ -60,6 +60,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('officers/show/{officers}', [\App\Http\Controllers\OfficersController::class, 'show']); 
         Route::get('/officers/create', [\App\Http\Controllers\OfficersController::class, 'create']);
         Route::post('officers', [\App\Http\Controllers\OfficersController::class, 'store']);  
+        Route::get('/reports/{reports}/edit', [\App\Http\Controllers\ReportsController::class, 'edit']); //shows edit post form
+        Route::get('/reports/archive/{id}', [\App\Http\Controllers\ReportsController::class, 'archive']);
       // Route::post('reports/show/{id}', [\App\Http\Controllers\ReportsController::class, 'show']);  
        
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
